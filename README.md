@@ -1,69 +1,113 @@
-Flask-Based Customer Relationship Management System
+**📊 Instagram Business CRM (Mini CRM)**
 
-A lightweight Customer Relationship Management (CRM) system tailored for Instagram businesses. This project helps you manage customers, messages, orders, reminders, and AI-powered insights for effective sales and engagement tracking.
+A lightweight yet powerful Customer Relationship Management (CRM) system built using Flask and SQLite, designed specifically for Instagram-based businesses.
+This project helps manage customers, messages, orders, reminders, and AI-powered replies in one centralized dashboard.
 
-Features
-Customer Management
+**🚀 Features**
+**👤 Customer Management**
 
 Add, edit, and delete customers
 
-Categorize customers by stage (Lead, Active, VIP)
+Store Instagram handle, email, and phone number
 
-Track Instagram handles, email, phone, and customer lifetime value (CLV)
+Categorize customers (Lead, Retail, Wholesale, VIP)
 
-Messaging & AI
+Track customer stages (New, Interested, Hot Lead, Ready to Order)
 
-Record inbound and outbound messages
+**💬 Messaging System**
 
-Auto-tag customers based on keywords
+Store inbound & outbound messages
 
-AI-powered message summary and reply generation
+Manual message logging
 
-Toggle AI on/off
+Complete message history per customer
 
-AI reply caching in the database
+Message templates for quick replies
 
-Fallback messages if API quota is exceeded
+**🤖 AI-Powered Features**
 
-Tone selection for replies: professional, friendly, sales, polite
+AI-generated reply suggestions
 
-Orders Management
+Cached AI replies to reduce API usage
 
-Add, update, and track customer orders
+Fallback replies when AI quota is exceeded
 
-View total revenue and customer lifetime value (CLV)
+AI-based customer summary
 
-Orders chart per customer
+Toggle AI ON/OFF from backend
 
-Reminders & Activities
+AI features are optional and can be disabled if no API key is available.
 
-Set customer-specific reminders
+**🏷️ Auto-Tagging System**
 
-Track all activities in a timeline
+Automatically tags customers based on message keywords:
 
-Data Export
+Keyword	Auto Tag
+price, cost	Interested
+available	Hot Lead
+order, buy	Ready to Order
+📦 Orders Management
 
-Export customers, orders, and messages to CSV
+Add customer orders
 
-Tech Stack
+Order statuses: Pending, Completed, Shipped
+
+Automatic Customer Lifetime Value (CLV) calculation
+
+Full order history per customer
+
+**⏰ Reminders**
+
+Create reminders per customer
+
+Use cases:
+
+Follow-ups
+
+Payment reminders
+
+Delivery reminders
+
+**📊 Dashboard & Analytics**
+
+Total customers
+
+Total messages
+
+Total orders
+
+Total revenue
+
+Orders-per-customer chart (Chart.js)
+
+**🧾 Customer Profile Page**
+
+Customer details
+
+Orders history
+
+Messages history
+
+Tags
+
+Reminders
+
+Activity timeline
+
+AI summary
+
+One screen = complete customer story
+
+**🛠️ Tech Stack**
 
 Backend: Python, Flask
 
 Database: SQLite
 
-Frontend: HTML, CSS, JavaScript (with Chart.js for visualizations)
+Frontend: HTML, CSS, JavaScript
 
-AI Integration: OpenAI API (GPT-3.5-turbo)
+Charts: Chart.js
 
-🛠️ Tech Stack
+AI : OpenAI API
 
-| Layer | Technology |
-|-----|-----------|
-| Backend | Flask (Python) |
-| Database | SQLite |
-| Frontend | HTML, CSS, JavaScript |
-| Charts | Chart.js |
-| Version Control | Git & GitHub |
-
-
-
+Version Control: Git & GitHub
