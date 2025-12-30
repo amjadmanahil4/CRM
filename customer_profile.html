@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer Profile - {{ customer.name }}</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>Profile: {{ customer.name }} (@{{ customer.instagram_handle }})</h1>
+
+    <p>Email: {{ customer.email }}</p>
+    <p>Phone: {{ customer.phone }}</p>
+    <p>Stage: {{ customer.stage }}</p>
+    <p>Category: {{ customer.category }}</p>
+    <p>Customer Lifetime Value (CLV): ${{ clv }}</p>
+
+    <!-- AI Toggle -->
+    <div>
+        <label>AI Enabled:</label>
+        <input type="checkbox" id="ai-toggle" {% if ai_enabled %}checked{% endif %}>
+    </div>
+
+    <!-- AI Summary -->
+    <h3>AI Summary</h3>
+    <p id="ai-summary">{{ ai_summary }}</p>
+    <button id="refresh-summary">Refresh Summary</button>
+
+    <!-- Tags -->
+    <h3>Tags</h3>
+    <ul>
+        {% for tag in tags %}
+        <li>{{ tag }}</li>
+        {% endfor %}
+    </ul>
+
+    <!-- Orders -->
+    <h3>Orders</h3>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Status</th>
+                <th>Timestamp</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in orders %}
+            <tr>
+                <td>{{ order.product_name }}</td>
+                <td>{{ order.quantity }}</td>
+                <td>{{ order.price }}</td>
+                <td>{{ order.status }}</td>
+                <td>{{ order.timestamp }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Messages -->
+    <h3>Messages</h3>
+    <ul>
+        {% for msg in messages %}
+        <li><strong>{{ msg.direction }}:</strong> {{ msg.message_text }} <em>({{ msg.timestamp }})</em></li>
+        {% endfor %}
+    </ul>
+
+    <!-- Reminders -->
+    <h3>Reminders</h3>
+    <ul>
+        {% for r in reminders %}
+        <li>{{ r.reminder_text }} - {{ r.reminder_date }}</li>
+        {% endfor %}
+    </ul>
+
+    <!-- Activity Timeline -->
+    <h3>Activity Timeline</h3>
+    <ul>
+        {% for act in activities %}
+        <li>{{ act.action }} - {{ act.timestamp }}</li>
+        {% endfor %}
+    </ul>
+
+<script>
+$(document).ready(function(){
+    $('#refresh-summary').click(function(){
+        if(!$('#ai-toggle').is(':checked')){
+            alert('AI is disabled.');
+            return;
+        }
+        $.get('/summary/{{ customer.id }}', function(data){
+            if(data.summary) {
+                $('#ai-summary').text(data.summary);
+            } else if(data.error) {
+                $('#ai-summary').text('AI quota exceeded. Fallback: please check manually.');
+            }
+        });
+    });
+});
+</script>
+</body>
+</html>

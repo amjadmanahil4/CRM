@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Message Templates</title>
+</head>
+<body>
+<h1>Message Templates</h1>
+<form method="post">
+    <label>Name</label>
+    <input type="text" name="name" required>
+    <label>Content</label>
+    <textarea name="content" required></textarea>
+    <button type="submit">Add Template</button>
+</form>
+
+<h2>Existing Templates</h2>
+<ul>
+{% for template in templates %}
+    <li>{{ template.name }}: {{ template.content }}</li>
+{% endfor %}
+</ul>
+</body>
+</html>
